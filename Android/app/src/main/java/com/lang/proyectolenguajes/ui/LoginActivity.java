@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.lang.proyectolenguajes.R;
 import com.lang.proyectolenguajes.data.SignupData;
+import com.lang.proyectolenguajes.model.LoginModel;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private Button signin, signup;
@@ -50,18 +53,48 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
     }
 
 
     private void login() {
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
-        String s = SignupData.getInstance().test();
-        Toast.makeText(LoginActivity.this, s, Toast.LENGTH_LONG).show();
+        if (checkFields()) {
+            LoginModel loginModel = new LoginModel();
+            String result = loginModel.login(txtUserName.getText().toString(), txtPassword.getText().toString());
+
+            switch (result) {
+                case "success":
+                    Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+                    //TODO load main activity
+                    break;
+                case "password":
+                        txtPassword.setError("La contraseña no es correcta");
+                    break;
+                case "username":
+                        txtUserName.setError("El nombre de usuario no es correcto");
+                    break;
+            }
+        }
     }
 
     private void signup() {
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
+    }
+
+
+
+    private boolean checkFields() {
+        boolean output = true;
+        if (txtPassword.getText().toString().length() < 4) {
+            txtPassword.setError("Debe ser de por lo menos 4 dígitos");
+            output = false;
+        }
+        if (txtUserName.getText().toString().length() < 4) {
+            output = false;
+            txtUserName.setError("Debe ingresar un nombre de usuario válido");
+        }
+
+        return output;
     }
 }

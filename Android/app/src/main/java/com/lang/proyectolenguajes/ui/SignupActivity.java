@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -53,21 +54,17 @@ public class SignupActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private String result;
     private void signup() {
         if (checkFields() && checkPasswordConfirmation()) {
             SignupModel signupModel = new SignupModel();
-            String result = signupModel.createUser(username.getText().toString(), password.getText().toString());
+
+            result = signupModel.createUser(username.getText().toString(), password.getText().toString());
+
 
             if (result.equalsIgnoreCase("Success")) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
-                builder.setMessage("Text");
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent intent= new Intent(SignupActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            }
-                        });
-                builder.show();
+                Intent intent = new Intent(SignupActivity.this, SuccessActivity.class);
+                startActivity(intent);
             } else if (result.equalsIgnoreCase("username")) {
                 username.setError("Este nombre no se encuentra disponible");
             } else {

@@ -15,9 +15,5 @@ AS
 				VALUES
 					(@param_username
 					,@param_password);
-
-				SELECT 'success' AS 'status';
-
-				
 			END 
 	END

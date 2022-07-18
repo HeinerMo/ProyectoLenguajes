@@ -12,16 +12,7 @@ public class SignupModel {
 
     public String createUser(String userName, String password) {
         String result = "error";
-        //Check if username is available
-        String temp = signupData.existsUsername(userName);
-        if (temp.equalsIgnoreCase("true")) {
-            result = "username";
-        }if (temp.equalsIgnoreCase("error")) {
-            result = "error";
-        }if (temp.equalsIgnoreCase("false")) {
-            result = signupData.createUser(userName, password);
-        }
-
+        result = signupData.createUser(userName, password);
         return result;
     }
 }

@@ -65,12 +65,14 @@ public class SignupData {
             String query = "exec sp_addStudent " + userName + ", " + password;
             statement.execute(query);
             ResultSet resultSet = statement.getResultSet();
-            if (resultSet.next()) {
+            if (resultSet != null && resultSet.next()) {
                 if (resultSet.getString("status").equalsIgnoreCase("error")) {
                     result = resultSet.getString("error");
                 } else if (resultSet.getString("status").equalsIgnoreCase("success")) {
                     result = "success";
                 }
+            } else {
+                result = "success";
             }
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
@@ -79,26 +81,4 @@ public class SignupData {
         return result;
     }
 
-    public String existsUsername(String username) {
-        String result = "";
-        try {
-            Class.forName(Classes);
-            Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
-            Statement statement = connection.createStatement();
-            String query = "exec sp_checkName " + username;
-            statement.execute(query);
-            ResultSet resultSet = statement.getResultSet();
-            if (resultSet.next()) {
-                if (resultSet.getString("status").equalsIgnoreCase("1")) {
-                    result = "true";
-                } else {
-                    result = "false";
-                }
-            }
-            connection.close();
-        } catch (SQLException | ClassNotFoundException e) {
-            result = e.getMessage();
-        }
-        return result;
-    }
 }
