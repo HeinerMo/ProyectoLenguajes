@@ -2,5 +2,11 @@
     <string name="app_name">Music Gigs</string>
     <string name="login_title">Iniciar Sesión</string>
     <string name="signup_question">¿No tienes una cuenta?</string>
+    <string name="signup_title">Registrarse</string>
+    <string name="password_check">Confirmar Contraseña</string>
+
+
+    <!-- Buttons -->
+    <string name="button_cancel">Cancelar</string>
     <string name="signup_button">Registrarse</string>
 </resources>
