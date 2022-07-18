@@ -16,7 +16,7 @@ public class LoginData {
     private  String database = "IF4101_Proyecto_B87581_B85042";
     private  String username = "laboratorios";
     private  String password = "Uy&)&nfC7QqQau.%278UQ24/=%";
-    private  String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database;
+    private  String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database+"";
 
     private LoginData() {
 

@@ -1,4 +1,4 @@
-package com.lang.proyectolenguajes.ui;
+package com.lang.proyectolenguajes;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -7,18 +7,13 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lang.proyectolenguajes.R;
-import com.lang.proyectolenguajes.data.SignupData;
 import com.lang.proyectolenguajes.model.LoginModel;
-
-import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private Button signin, signup;
@@ -65,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
             switch (result) {
                 case "success":
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
-                    //TODO load main activity
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                    startActivity(intent);
                     break;
                 case "password":
                         txtPassword.setError("La contraseña no es correcta");
@@ -81,6 +77,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
         startActivity(intent);
     }
+
+
 
 
 
