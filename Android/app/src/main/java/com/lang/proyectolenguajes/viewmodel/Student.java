@@ -1,4 +1,4 @@
-package com.lang.proyectolenguajes.domain;
+package com.lang.proyectolenguajes.viewmodel;
 
 public class Student {
     private String name;
