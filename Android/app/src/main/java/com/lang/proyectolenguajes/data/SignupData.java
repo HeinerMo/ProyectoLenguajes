@@ -56,13 +56,13 @@ public class SignupData {
         return result;
     }
 
-    public String createUser(String userName, String password) {
+    public String createUser(String carnet, String userName, String password) {
         String result = "";
         try {
             Class.forName(this.Classes);
             Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
             Statement statement = connection.createStatement();
-            String query = "exec sp_addStudent " + userName + ", " + password;
+            String query = "exec sp_addStudent " + userName + ", " + password + ", " + carnet;
             statement.execute(query);
             ResultSet resultSet = statement.getResultSet();
             if (resultSet != null && resultSet.next()) {

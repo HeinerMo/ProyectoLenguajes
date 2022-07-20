@@ -1,10 +1,10 @@
 CREATE OR ALTER PROCEDURE sp_studentLogin
-	@param_username VARCHAR(40), @para_password VARCHAR(30)
+	@param_carnet VARCHAR(40), @param_password VARCHAR(30)
 AS
 	BEGIN
-		IF EXISTS(SELECT TOP 1 1 FROM tb_Students WHERE NAME_STUDENT = @param_username)
+		IF EXISTS(SELECT TOP 1 1 FROM tb_Students WHERE id = @param_carnet)
 			BEGIN
-				IF EXISTS(SELECT TOP 1 1 FROM tb_Students WHERE PASSWORD = @para_password)
+				IF EXISTS(SELECT TOP 1 1 FROM tb_Students WHERE PASSWORD = @param_password)
 					BEGIN
 						SELECT 'success' AS 'status';
 					END
@@ -15,7 +15,7 @@ AS
 			END
 		ELSE
 			BEGIN
-				SELECT 'username' AS 'status';
+				SELECT 'carnet' AS 'status';
 			END
 	END
 GO

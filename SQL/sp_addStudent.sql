@@ -1,19 +1,30 @@
 CREATE OR ALTER PROCEDURE sp_addStudent
 	@param_username VARCHAR(40) = NULL
 	,@param_password VARCHAR(30) = NULL
+	,@param_carnet VARCHAR(7) = NULL
 AS
 	BEGIN 
-		IF EXISTS (SELECT TOP 1 1 FROM tb_Students WHERE NAME_STUDENT = @param_username)
+		IF EXISTS (SELECT TOP 1 1 FROM tb_Students WHERE id = @param_carnet)
 			BEGIN 
-				SELECT 'error' AS 'status', 'username' AS 'error';
+				SELECT 'error' AS 'status', 'carnet' AS 'error';
 			END 
 		ELSE 
 			BEGIN 
-				INSERT INTO tb_Students
-					(NAME_STUDENT
-					,PASSWORD)
-				VALUES
-					(@param_username
-					,@param_password);
+				IF EXISTS (SELECT TOP 1 1 FROM tb_Students WHERE student_name = @param_username)
+					BEGIN 
+						SELECT 'error' AS 'status', 'username' AS 'error';
+					END 
+				ELSE 
+					BEGIN 
+						INSERT INTO tb_Students
+							(id
+							,student_name
+							,password)
+						VALUES
+							(@param_carnet
+							,@param_username
+							,@param_password);
+				
+					END 
 			END 
 	END

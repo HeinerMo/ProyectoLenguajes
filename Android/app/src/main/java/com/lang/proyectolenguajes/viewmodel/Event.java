@@ -12,8 +12,9 @@ public class Event {
     private String closingDate;
     private int places;
     private Artist artist;
+    private int avaiblePlaces;
 
-    public Event(int eventId, String eventName, String campusName, String startingDate, String closingDate, int places, Artist artist) {
+    public Event(int eventId, String eventName, String campusName, String startingDate, String closingDate, int places, int avaiblePlaces, Artist artist) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.campusName = campusName;
@@ -21,6 +22,7 @@ public class Event {
         this.closingDate = closingDate;
         this.places = places;
         this.artist = artist;
+        this.avaiblePlaces = avaiblePlaces;
     }
 
     public int getEventId() {
@@ -49,6 +51,10 @@ public class Event {
 
     public Artist getArtist() {
         return artist;
+    }
+
+    public int getAvaiblePlaces() {
+        return avaiblePlaces;
     }
 
     @Override

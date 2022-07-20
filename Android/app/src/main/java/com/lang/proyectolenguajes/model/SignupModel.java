@@ -10,9 +10,9 @@ public class SignupModel {
         signupData = SignupData.getInstance();
     }
 
-    public String createUser(String userName, String password) {
+    public String createUser(String carnet, String userName, String password) {
         String result = "error";
-        result = signupData.createUser(userName, password);
+        result = signupData.createUser(carnet, userName, password);
         return result;
     }
 }

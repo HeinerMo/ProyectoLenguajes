@@ -19,13 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtUsernameLoginActivity"
+        android:id="@+id/txtCarnetLoginActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Carné"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsernameLoginActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarnetLoginActivity" />
 
     <Button
         android:id="@+id/btnLoginLoginActivity"

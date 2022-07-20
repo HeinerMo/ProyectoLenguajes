@@ -30,7 +30,7 @@ public class MenuActivity extends AppCompatActivity {
         btnSummary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MenuActivity.this, "Resumen", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MenuActivity.this, SummaryActivity.class));
             }
         });
 

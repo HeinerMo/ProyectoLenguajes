@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".SignupActivity">
 
     <EditText
-        android:id="@+id/txtUsernameSignupActivity"
+        android:id="@+id/txtCarnetSignupActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Carné"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSignupTitleSignupActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/txtSignupTitleSignupActivity" />
 
     <TextView
         android:id="@+id/txtSignupTitleSignupActivity"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsernameSignupActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNameSignupActiviy" />
 
     <EditText
         android:id="@+id/txtPasswordConfirmationSignupActivity"
@@ -73,17 +73,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPasswordSignupActivity" />
 
-    <Button
-        android:id="@+id/btnCancelSignupActivity"
-        style="@style/Widget.AppCompat.Button.Small"
+    <EditText
+        android:id="@+id/txtNameSignupActiviy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="@string/button_cancel"
-        android:textColor="@color/appBackground"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignupSignupActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarnetSignupActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

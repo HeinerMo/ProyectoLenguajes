@@ -5,11 +5,13 @@ public class Artist {
     private int id;
     private String name;
     private String song;
+    private String imgName;
 
-    public Artist(int id, String name, String song) {
+    public Artist(int id, String name, String song, String imgName) {
         this.id = id;
         this.name = name;
         this.song = song;
+        this.imgName = imgName;
     }
 
     public int getId() {
@@ -22,6 +24,10 @@ public class Artist {
 
     public String getSong() {
         return song;
+    }
+
+    public String getImgName() {
+        return imgName;
     }
 
     @Override

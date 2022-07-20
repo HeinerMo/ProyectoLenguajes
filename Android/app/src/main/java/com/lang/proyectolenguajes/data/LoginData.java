@@ -1,5 +1,9 @@
 package com.lang.proyectolenguajes.data;
 
+import android.util.Log;
+
+import com.lang.proyectolenguajes.viewmodel.Student;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,6 +21,7 @@ public class LoginData {
     private  String username = "laboratorios";
     private  String password = "Uy&)&nfC7QqQau.%278UQ24/=%";
     private  String url = "jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database+"";
+    private Student student;
 
     private LoginData() {
 
@@ -30,13 +35,13 @@ public class LoginData {
         return loginData;
     }
 
-    public String login(String username, String password) {
+    public String login(String carnet, String password) {
         String result = "";
         try {
             Class.forName(Classes);
             Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
             Statement statement = connection.createStatement();
-            String query = "exec sp_studentLogin " + username + ", " + password;
+            String query = "exec sp_studentLogin " + carnet + ", " + password;
             statement.execute(query);
             ResultSet resultSet = statement.getResultSet();
 
@@ -51,4 +56,25 @@ public class LoginData {
         return result;
     }
 
+    public void setStudent(String s) {
+        try {
+            Class.forName(Classes);
+            Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
+            Statement statement = connection.createStatement();
+            String query = "Select * from tb_students where id = " + "'" + s + "'";
+            statement.execute(query);
+            ResultSet resultSet = statement.getResultSet();
+
+            if (resultSet.next()) {
+                student = new Student(resultSet.getString("student_name"), resultSet.getString("id"), resultSet.getString("password"));
+            }
+            connection.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            Log.wtf("Error", e.getMessage());
+        }
+    }
+
+    public Student getStudent() {
+        return student;
+    }
 }

@@ -23,4 +23,16 @@ public class EventModel {
     public Event getEvent(int i) {
         return eventData.getEvent(i);
     }
+
+    public String signToEvent(String carnet, String event ) {
+        return eventData.signToEvent(carnet, event);
+    }
+
+    public ArrayList<Event> getStudentEvents(String id) {
+        return eventData.getStudentEvents(id);
+    }
+
+    public void signOffEvent(String id, int eventId) {
+        eventData.signOffEvent(id, eventId);
+    }
 }
