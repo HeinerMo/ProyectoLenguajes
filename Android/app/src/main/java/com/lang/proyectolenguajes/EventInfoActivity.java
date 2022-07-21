@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,10 +15,11 @@ import com.lang.proyectolenguajes.viewmodel.Event;
 
 public class EventInfoActivity extends AppCompatActivity {
 
-    private Button btnSign;
+    private Button btnSign, btnAddComment;
     private TextView txtName;
     private TextView txtInfo;
     private Event e;
+    private EditText editTextComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,9 @@ public class EventInfoActivity extends AppCompatActivity {
 
         txtInfo = findViewById(R.id.txtEventInfoActivity);
         txtName = findViewById(R.id.txtEventActivityName);
+
+        editTextComment = findViewById(R.id.editTxtEventInfoComment);
+        btnAddComment = findViewById(R.id.btnEventInforComment);
 
 
         int eventId;
@@ -83,5 +88,27 @@ public class EventInfoActivity extends AppCompatActivity {
             }
         });
 
+
+        btnAddComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //check if comment is empty
+
+                if (editTextComment.getText().toString().isEmpty()) {
+                    editTextComment.setError("Debe ingresar un comentario");
+                } else {
+                    String result = new EventModel().addComment(editTextComment.getText().toString(), e.getArtist().getId(), new LoginModel().getStudent().getId());
+                    switch (result) {
+                        case "success":
+                            Toast.makeText(EventInfoActivity.this, "Se a agregado tu comentario.", Toast.LENGTH_LONG).show();
+                            editTextComment.setText("");
+                            break;
+                        case "error":
+                            Toast.makeText(EventInfoActivity.this, "¡Oh no! Algo ha salido mal.", Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                }
+            }
+        });
     }
 }

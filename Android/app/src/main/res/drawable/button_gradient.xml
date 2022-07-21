@@ -6,12 +6,10 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
             <gradient
-                android:angle="270"
-                android:centerColor="#6EC4E6"
-                android:endColor="#658299"
-                android:startColor="#758299" />
-            <corners android:radius="15dp" />
-
+                android:startColor="#7478BD"
+                android:centerColor="#557478BD"
+                android:endColor="#7478BD"
+                android:type="linear"/>
         </shape>
     </item>
 

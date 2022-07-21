@@ -35,4 +35,12 @@ public class EventModel {
     public void signOffEvent(String id, int eventId) {
         eventData.signOffEvent(id, eventId);
     }
+
+    public ArrayList<Event> getEvents(int campusId) {
+        return eventData.getEvents(campusId);
+    }
+
+    public String addComment(String comment, int artistId, String studentId) {
+        return eventData.addComment(comment, artistId, studentId);
+    }
 }

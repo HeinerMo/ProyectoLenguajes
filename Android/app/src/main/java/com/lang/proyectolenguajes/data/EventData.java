@@ -155,4 +155,59 @@ public class EventData {
         }
 
     }
+
+    public ArrayList<Event> getEvents(int campusId) {
+        events = new ArrayList<>();
+        try {
+            Class.forName(Classes);
+            Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
+            Statement statement = connection.createStatement();
+            String query = "EXEC sp_getEvents " + campusId;
+            statement.execute(query);
+            ResultSet resultSet = statement.getResultSet();
+
+            while (resultSet != null && resultSet.next()) {
+                Artist a = new Artist(resultSet.getInt("ID_ARTIST"), resultSet.getString("NAME_ARTIST"), resultSet.getString("FAMOUS_SONG"), resultSet.getString("PHOTO_ARTIST"));
+                //int eventId, String eventName, String campusName, String startingDate, String closingDate, int places, Artist artist
+
+                Event e = new Event(
+                        resultSet.getInt("ID_EVENT"),
+                        resultSet.getString("NAME_EVENT"),
+                        resultSet.getString("NAME_RECINTO"),
+                        resultSet.getString("TIME_START_EVENT"),
+                        resultSet.getString("TIME_END_EVENT"),
+                        resultSet.getInt("TAQUILLA"),
+                        resultSet.getInt("AVAIBLE"),
+                        a
+                );
+
+                events.add(e);
+
+            }
+            connection.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            Log.wtf("", e.getMessage());
+        }
+
+        return events;
+    }
+
+    public String addComment(String comment, int artistId, String studentId) {
+        try {
+            Class.forName(Classes);
+            Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
+            Statement statement = connection.createStatement();
+            String query = "EXEC sp_AddComment " + "'" + comment + "'" + ", " + artistId + ", " + studentId;
+            statement.execute(query);
+            ResultSet resultSet = statement.getResultSet();
+            if (resultSet.next()) {
+                return resultSet.getString("status");
+            }
+            connection.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            Log.wtf("SQL ERROR: ", e.getMessage());
+            return "error";
+        }
+        return "error";
+    }
 }

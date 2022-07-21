@@ -66,9 +66,11 @@ public class LoginData {
             ResultSet resultSet = statement.getResultSet();
 
             if (resultSet.next()) {
-                student = new Student(resultSet.getString("student_name"), resultSet.getString("id"), resultSet.getString("password"));
+                student = new Student(resultSet.getString("student_name"), resultSet.getString("id"), resultSet.getString("password"), CampusData.getInstance().getCampus(resultSet.getInt("recinto")));
             }
+            Log.wtf("Campus", student.getCampus().getName());
             connection.close();
+
         } catch (SQLException | ClassNotFoundException e) {
             Log.wtf("Error", e.getMessage());
         }

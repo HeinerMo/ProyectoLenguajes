@@ -4,11 +4,13 @@ public class Student {
     private String name;
     private String id;
     private String password;
+    private Campus campus;
 
-    public Student(String name, String id, String password) {
+    public Student(String name, String id, String password, Campus campus) {
         this.name = name;
         this.id = id;
         this.password = password;
+        this.campus = campus;
     }
 
     public String toString() {
@@ -25,5 +27,9 @@ public class Student {
 
     public String getPassword() {
         return password;
+    }
+
+    public Campus getCampus() {
+        return campus;
     }
 }

@@ -37,7 +37,7 @@ public class MenuActivity extends AppCompatActivity {
         btnRecomendations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MenuActivity.this, "Recomendados", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MenuActivity.this, RecommendedActivity.class));
             }
         });
     }
