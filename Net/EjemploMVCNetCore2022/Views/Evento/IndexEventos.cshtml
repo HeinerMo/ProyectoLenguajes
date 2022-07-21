@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    @model EventoModel
+
+}
+
+<div class="cotainer">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-header text-center" style="color:white;">¡Bienvenido a la sección de eventos!</h1>
+        </div>
+        <div class="col-12">
+            <h2 class="page-header text-center"></h2>
+        </div>
+
+
+            @foreach (EventoModel eventoActual in ViewBag.Eventos)
+            {
+                string ruta = "/Img/" + eventoActual.Imagen;
+
+                <div class="col-md-4 mb-4" style="background-color: #649BB5">
+
+                    <div class="w3-card-4 w3-dark-grey">
+
+                        <div class="w3-container w3-center">
+                            <h3 class="text-center" style="color:white;">@eventoActual.Nombre</h3>
+                            <center>
+                                <img class="card-img-top" src="@ruta" alt="Card image cap" style="width:200px; height:200px">
+                            </center>
+                            <h5 style="color:black ;">Artista invitado: @eventoActual.NombreArtista</h5>
+                            <h5 style="color:black ;">Recinto: @eventoActual.Recinto</h5>
+                            <h5 style="color:black ;">Cupos disponibles: @eventoActual.Taquilla</h5>
+                            <h5 style="color:forestgreen;">Fecha de inicio: @eventoActual.Start_Event.ToString("dd MMMM HH:mm")</h5>
+                            <h5 style="color:maroon;">Fecha de cierre: @eventoActual.End_Event.ToString("dd MMMM HH:mm")</h5>
+                            <h5 style="color:white;">Estado: @eventoActual.Estado</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgoZMVXlu50qd+qy142WA+AAAAAACAAAAAAAQZgAAAAEAACAAAADyld0Dd0CP22a/0NKJ6oq6OKG4L69p0Q443LjPBK2cfQAAAAAOgAAAAAIAACAAAAA8MLA6Gy3ghves+rb1jTRr9vFQYoBRo1LyDxOwl0XmWCAAAAAxJGKWbVdJBTQQGjjdM5pxsm96bDLp8DjYFKeWSb0/lUAAAABn7abDuX4hrU1D1o2/79w2VWiQuckHglNOW/JC3hPYj5kWqtFX26VZGPUwDBTO6fP+qaTKBXexGmxcIB5hse59</EncryptedPassword>
+    <_PublishTargetUrl>ftp://win8038.site4now.net:21/h:/root/home/ailentest1staff-001/www/site2/wp-admin/images</_PublishTargetUrl>
+    <History>False|2022-07-20T06:27:28.1596433Z;False|2022-07-20T00:26:31.0852524-06:00;False|2022-07-20T00:26:11.4022663-06:00;False|2022-07-20T00:25:58.1079295-06:00;False|2022-07-20T00:22:20.9713679-06:00;False|2022-07-20T00:20:55.3601140-06:00;False|2022-07-20T00:19:08.9560814-06:00;False|2022-07-20T00:18:59.1741228-06:00;False|2022-07-20T00:18:35.5873662-06:00;False|2022-07-20T00:18:02.1539963-06:00;</History>
+  </PropertyGroup>
+</Project>

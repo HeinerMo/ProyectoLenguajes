@@ -1,0 +1,105 @@
+﻿@model EventoModel
+
+
+@{
+    ViewData["Title"] = "Buscar";
+}
+<h1 class="jumbotron-heading"></h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Buscar Evento</h1>
+
+        <form asp-action="Buscar">
+
+            <div class="form-floating mb-3">
+                <input asp-for="Nombre" type="text" class="form-control" placeholder="Nombre del evento">
+            </div>
+
+            <div class="form-floating mb-3">
+                <label class="form-label" for="lblname">Lugar del evento</label>
+                <select asp-for="Recinto" class="select form-control">
+                    <option>Turrialba</option>
+                    <option>Paraíso</option>
+                    <option>Guápiles</option>
+                    <option>San Ramón</option>
+                    <option>Grecia</option>
+                    <option>Santa Cruz</option>
+                    <option>Limón</option>
+                    <option>Golfito</option>
+                </select>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="NombreArtista" type="text" class="form-control" placeholder="Nombre del artista">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input type="submit" value="Buscar" class="btn-primary btn btn-block btn-lg gradient-custom-4" style="background-color: #213B45; font-palette:light" />
+            </div>
+        </form>
+
+
+
+        <table class="table table-responsive table-bordered text-center">
+
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Recinto)
+                    </th>
+                    <th>
+                        Horario
+                    </th>
+                    <th>
+                        Artista
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Taquilla)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @foreach (EventoModel eventoActual in ViewBag.Eventos)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Recinto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Start_Event)
+                            @Html.DisplayFor(modelItem => eventoActual.End_Event)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.NombreArtista)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Taquilla)
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</section>

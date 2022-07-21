@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    @model LoginModel
+}
+
+@{
+    Layout = null;
+
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoFinalIF4101</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script type="text/javascript" src="~/js/jquery.js"></script>
+</head>
+
+
+<body style="background-color: #396577">
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: #213B45">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Login" asp-action="Login">Music Gigs</a>
+            </div>
+        </nav>
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Inicio de Sesión</h2>
+
+                                <form enctype="multipart/form-data" asp-action="IndexLogin">
+
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Usuario" type="text" class="form-control" placeholder="Usuario" required>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input asp-for="Contrasenia" type="password" class="form-control" placeholder="Contraseña" required>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <input type="submit" value="Iniciar Sesión" class="btn-primary btn btn-block btn-lg gradient-custom-4" style="background-color: #213B45; font-palette:light" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </header>
+    <footer class="border-top footer text-muted">
+        <div class="container text-light">
+            &copy; 2022 - Proyecto Final IF4101 Lenguajes para aplicaciones comerciales - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+

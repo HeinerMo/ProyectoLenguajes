@@ -1,0 +1,90 @@
+﻿@model EventoModel
+
+@{
+    ViewData["Title"] = "Administrar";
+}
+<h1 class="jumbotron-heading"></h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Administrar Eventos</h1>
+        <p>
+            <a asp-controller="Evento" asp-action="Registrar">Crear evento</a>
+        </p>
+        <table class="table table-responsive table-bordered text-center">
+
+            <thead>
+                <tr>
+
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Lugar
+                    </th>
+                    <th>
+                        Horario
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Artista
+                    </th>
+                    <th>
+                        Canción famosa
+                    </th>
+                    <th>
+                        Capacidad
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (EventoModel eventoActual in ViewBag.Eventos)
+                {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.Recinto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.Start_Event)
+                        @Html.DisplayFor(modelItem => eventoActual.End_Event)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.NombreArtista)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.CancionFamosa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => eventoActual.Taquilla)
+                    </td>
+                    <td>
+                        <form asp-action="Actualizar">
+                            <input asp-for="Id" value="@eventoActual.Id" hidden />
+                            <input type="submit" value="Actualizar" class="btn-primary" style="background-color: #213B45" />
+                        </form>
+                        <form asp-action="Eliminar">
+                            <input asp-for="Id" value="@eventoActual.Id" hidden />
+                            <input type="submit" value="Eliminar" class="btn-primary" style="background-color: #213B45" />
+                        </form>
+                    </td>
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</section>

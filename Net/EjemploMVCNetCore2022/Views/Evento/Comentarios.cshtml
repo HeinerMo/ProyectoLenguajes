@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Comentarios";
+    @model ComentarioModel
+}
+<h1 class="jumbotron-heading"></h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Comentarios</h1>
+        <table class="table">
+
+            <thead>
+                <tr>
+
+                    <th>
+                        Estudiante
+                    </th>
+                    <th>
+                        Artista
+                    </th>
+                    <th>
+                        Comentario
+                    </th>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (ComentarioModel eventoActual in ViewBag.Comentarios)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Estudiante)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Artista)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => eventoActual.Comentario)
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</section>
