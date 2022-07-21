@@ -36,33 +36,13 @@ public class SignupData {
         return instance;
     }
 
-    public String test() {
-
-        String result = "Result: ";
-        try {
-            Class.forName(Classes);
-            Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
-            Statement statement = connection.createStatement();
-            String query = "select * from tb_students;";
-            statement.execute(query);
-            ResultSet resultSet = statement.getResultSet();
-            resultSet.next();
-            result += "Nombre: " + resultSet.getString("NAME_STUDENT") + " PASSWORD: " + resultSet.getString("PASSWORD");
-            connection.close();
-        } catch (SQLException | ClassNotFoundException e) {
-            result += e.getMessage();
-        }
-
-        return result;
-    }
-
-    public String createUser(String carnet, String userName, String password) {
+    public String createUser(String carnet, String userName, String password, int campus) {
         String result = "";
         try {
             Class.forName(this.Classes);
             Connection connection = DriverManager.getConnection(this.url, this.username, this.password);
             Statement statement = connection.createStatement();
-            String query = "exec sp_addStudent " + userName + ", " + password + ", " + carnet;
+            String query = "exec sp_addStudent " + userName + ", " + password + ", " + carnet + ", " + campus;
             statement.execute(query);
             ResultSet resultSet = statement.getResultSet();
             if (resultSet != null && resultSet.next()) {

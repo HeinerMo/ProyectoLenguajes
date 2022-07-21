@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 public class SummaryActivity extends AppCompatActivity {
 
     private String imgSrc = "http://susoca-001-site1.dtempurl.com/Img/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,51 +38,63 @@ public class SummaryActivity extends AppCompatActivity {
         int id;
 
         LayoutInflater inflater = LayoutInflater.from(SummaryActivity.this);
+        Log.wtf("Size", events.size() + "");
+        if (events.size() > 0) {
+            for (Event e : events) {
+                if (e.getAvaiblePlaces() > 0) {
+                    id = R.layout.fragment_event_remove;
+                    final ConstraintLayout layout = (ConstraintLayout) inflater.inflate(id, null, false);
+                    TextView txt = (TextView) layout.getViewById(R.id.txtEventTitle);
+                    txt.setText(e.getEventName());
+
+                    txt = (TextView) layout.getViewById(R.id.txtEventInfo);
+                    txt.setText(e.getArtist().getName());
+                    ImageView img = (ImageView) layout.getViewById(R.id.imgEventAdd);
+                    String url = imgSrc + e.getArtist().getImgName();
+                    loadImage(url, img);
 
 
-        for (Event e : events) {
-            if (e.getAvaiblePlaces() > 0) {
-                id = R.layout.fragment_event_remove;
-                final ConstraintLayout layout = (ConstraintLayout) inflater.inflate(id, null, false);
-                TextView txt = (TextView) layout.getViewById(R.id.txtEventTitle);
-                txt.setText(e.getEventName());
+                    Button button = (Button) layout.getViewById(R.id.btnRemoveSubscription);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(SummaryActivity.this);
+                            alert.setTitle("Eliminar");
+                            alert.setMessage("¿De verdad quieres cancelar tu asistencia a este evento?");
+                            alert.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    new EventModel().signOffEvent(new LoginModel().getStudent().getId(), e.getEventId());
+                                    linearLayout.removeView(layout);
+                                }
+                            });
 
-                txt = (TextView) layout.getViewById(R.id.txtEventInfo);
-                txt.setText(e.getArtist().getName());
-                ImageView img = (ImageView) layout.getViewById(R.id.imgEventAdd);
-                String url = imgSrc + e.getArtist().getImgName();
-                loadImage(url, img);
-
-
-                Button button = (Button) layout.getViewById(R.id.btnRemoveSubscription);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(SummaryActivity.this);
-                        alert.setTitle("Eliminar");
-                        alert.setMessage("¿De verdad quieres cancelar tu asistencia a este evento?");
-                        alert.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                new EventModel().signOffEvent(new LoginModel().getStudent().getId(), e.getEventId());
-                                linearLayout.removeView(layout);
-                            }
-                        });
-
-                        alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        alert.show();
-                    }
-                });
-                linearLayout.addView(layout);
-                id = R.layout.separator;
-                ConstraintLayout cl = (ConstraintLayout) inflater.inflate(id, null, false);
-                linearLayout.addView(cl);
+                            alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            alert.show();
+                        }
+                    });
+                    linearLayout.addView(layout);
+                    id = R.layout.separator;
+                    ConstraintLayout cl = (ConstraintLayout) inflater.inflate(id, null, false);
+                    linearLayout.addView(cl);
+                }
             }
+        } else {
+            AlertDialog.Builder alert = new AlertDialog.Builder(SummaryActivity.this);
+            alert.setTitle("¡Vaya!");
+            alert.setMessage("Parece que no te has registrado a ninguna actividad");
+            alert.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            alert.show();
         }
     }
 

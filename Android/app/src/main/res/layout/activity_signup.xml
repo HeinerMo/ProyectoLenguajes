@@ -9,7 +9,7 @@
 
     <EditText
         android:id="@+id/txtCarnetSignupActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:autofillHints=""
@@ -20,22 +20,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSignupTitleSignupActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSignupTitleSignupActivity"
+        app:layout_constraintWidth_percent="0.5" />
 
     <TextView
         android:id="@+id/txtSignupTitleSignupActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="@string/signup_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
 
     <EditText
         android:id="@+id/txtPasswordSignupActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
@@ -45,11 +47,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameSignupActiviy" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNameSignupActiviy"
+        app:layout_constraintWidth_percent="0.5" />
 
     <EditText
         android:id="@+id/txtPasswordConfirmationSignupActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
@@ -59,31 +62,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordSignupActivity" />
-
-    <Button
-        android:id="@+id/btnSignupSignupActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="@string/signup_button"
-        android:textColor="@color/globalText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordSignupActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordSignupActivity"
+        app:layout_constraintWidth_percent="0.5" />
 
     <EditText
         android:id="@+id/txtNameSignupActiviy"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCarnetSignupActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCarnetSignupActivity"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Spinner
+        android:id="@+id/spinerCampusSignup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:contentDescription="Recintos"
+        android:minHeight="48dp"
+        android:popupBackground="@drawable/background_gradient"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPasswordConfirmationSignupActivity"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/btnSignupSignupActivity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/signup_button"
+        android:textColor="@color/globalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinerCampusSignup"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

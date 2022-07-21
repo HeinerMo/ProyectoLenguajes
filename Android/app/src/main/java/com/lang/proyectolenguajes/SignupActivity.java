@@ -4,13 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lang.proyectolenguajes.model.CampusModel;
 import com.lang.proyectolenguajes.model.SignupModel;
+import com.lang.proyectolenguajes.viewmodel.Campus;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +25,9 @@ public class SignupActivity extends AppCompatActivity {
 
     private Button signup;
     private TextView name, carnet, password, passwordCheck;
+    private Spinner spinnerCampuses;
+    private int selectedCampus;
+    private ArrayList<Campus> campuses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +41,19 @@ public class SignupActivity extends AppCompatActivity {
         name = findViewById(R.id.txtNameSignupActiviy);
         password = findViewById(R.id.txtPasswordSignupActivity);
         passwordCheck = findViewById(R.id.txtPasswordConfirmationSignupActivity);
+        spinnerCampuses = findViewById(R.id.spinerCampusSignup);
+
+
+        campuses = new CampusModel().getCampuses();
+        String[] items = new String[campuses.size()];
+        for (int i = 0; i < items.length; i++) {
+            items[i] = campuses.get(i).getName();
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter<>(SignupActivity.this,  R.layout.dropdown_item_style, items);
+
+        spinnerCampuses.setAdapter(adapter);
+
 
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +75,7 @@ public class SignupActivity extends AppCompatActivity {
         if (checkFields() && checkPasswordConfirmation()) {
             SignupModel signupModel = new SignupModel();
 
-            result = signupModel.createUser(carnet.getText().toString(), name.getText().toString(), password.getText().toString());
+            result = signupModel.createUser(carnet.getText().toString(), name.getText().toString(), password.getText().toString(), campuses.get(spinnerCampuses.getSelectedItemPosition()).getId());
 
 
             if (result.equalsIgnoreCase("Success")) {
