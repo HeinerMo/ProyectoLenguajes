@@ -1,3 +1,3 @@
-# Final Project for Programming Languages for Business applications.
-This project consists of an android application that requires a login and allows users to subscribe to an event and leave comments.
-The administrator creates the events from the website and the android application pulls the information from the database. 
+# Proyecto final para el curso de lenguajes para aplicaciones comerciales.
+Este proyecto consiste de una aplicación de android que se comunica con una página web desarrollada en NET Core con el modelo MVC. La aplicación de android permite al usuario autenticarse, visualizar eventos, suscribirse a dichos eventos y realizar comentarios. 
+La página web permite a los administradores crear nuevos eventos y ver los comentarios realizados por los usuarios.
